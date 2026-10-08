@@ -1,0 +1,39 @@
+.owner-contact-card {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr auto auto;
+  gap: 14px;
+  align-items: end;
+  padding: 17px;
+  background: #faf8f7;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.owner-contact-card p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  max-width: 190px;
+  padding: 9px 0;
+}
+
+.toggle-row input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--rose);
+  box-shadow: none;
+}
+
+@media (max-width: 1150px) {
+  .owner-contact-card { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 760px) {
+  .owner-contact-card { grid-template-columns: 1fr; }
+}

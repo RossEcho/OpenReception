@@ -1,0 +1,39 @@
+name: openreception
+
+services:
+  webhook:
+    build:
+      context: .
+    env_file:
+      - .env
+    environment:
+      PORT: "3000"
+    ports:
+      - "127.0.0.1:${WEBHOOK_PORT:-3000}:3000"
+    volumes:
+      - assistant_data:/data
+      - ./.env:/config/.env
+    restart: unless-stopped
+
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    profiles: ["tunnel"]
+    command: tunnel --no-autoupdate --url http://webhook:3000
+    depends_on:
+      webhook:
+        condition: service_healthy
+    restart: unless-stopped
+
+  named-tunnel:
+    image: cloudflare/cloudflared:latest
+    profiles: ["named-tunnel"]
+    command: tunnel --no-autoupdate --loglevel info --metrics 0.0.0.0:2000 run
+    environment:
+      TUNNEL_TOKEN: "${CLOUDFLARE_TUNNEL_TOKEN:-}"
+    depends_on:
+      webhook:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  assistant_data:

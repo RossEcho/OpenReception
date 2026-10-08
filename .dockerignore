@@ -1,0 +1,16 @@
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+.docker-settings-store.json
+.cache
+data
+assets
+node_modules
+npm-debug.log
+README.md
+test
+src
+scripts
+package.json
