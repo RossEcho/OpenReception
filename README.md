@@ -15,6 +15,12 @@ The project began with beauty businesses in mind, but its business identity, ser
 - an HTTPS callback URL; the included Cloudflare Quick Tunnel is sufficient for testing;
 - outbound HTTPS access to Meta Graph API and OpenRouter.
 
+### Guided requirements setup
+
+This repository includes [`AGENTIC_SETUP.md`](AGENTIC_SETUP.md), a complete step-by-step guide for preparing the requirements, configuring Docker, connecting Meta WhatsApp Cloud API and OpenRouter, validating the webhook, and completing the first business setup.
+
+You can follow the guide yourself or give the file to the AI assistant of your choice and ask it to guide you through the installation. The guide explicitly tells the assistant never to request your secret keys or tokens in chat; sensitive values must be entered directly into your local `.env` file or local System settings page.
+
 Local development without Docker requires Go 1.26 or the version declared in [`go.mod`](go.mod).
 
 ## Clean installation
